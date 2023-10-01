@@ -1,0 +1,30 @@
+{% extends './base.html' %}
+
+{% block title %} inicio de sesion {% endblock %}
+
+{% block customCCS %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css')}}">
+{% endblock %}
+
+{% block body %}
+<form class="form-signin" action="/login" method="POST">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <h1 class="h3 mb-3 fw-normal">Inicio de sesión</h1>
+
+    <div class="form-floating">
+        <input type="text" class="form-control" id="usuario" name="usuario" placeholder="usuario" minlength="4" maxlength="28" required autofocus>
+        <label for="usuario">Usuario</label>
+    </div>
+    <div class="form-floating">
+        <input type="password" class="form-control" id="password" name="password" placeholder="Password" minlength="4" required>
+        <label for="password">Password</label>
+    </div>
+
+    <button class="btn btn-primary w-100 py-2" type="submit">Iniciar Sesión</button>
+    <p class="mt-5 mb-3 text-body-secondary">&copy; 2023</p>
+</form>
+
+{% block customJS %}
+<script src="{{ url_for('static', filename='js/login.js')}}"></script>
+{% endblock %}
+{% endblock %}
